@@ -1,0 +1,9 @@
+INPUT
+scanf()
+gets()
+getch()
+getche()
+
+OUTPUT
+printf()
+puts()
