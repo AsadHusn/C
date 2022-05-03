@@ -47,8 +47,16 @@ int main()
 	list->next->next->next->next = temp;
 	
 //	print
-	for(struct node *temp=list; temp!=NULL; temp=(*temp).next)
+	for(temp=list; temp!=NULL; temp=(*temp).next)
 	{
 		printf("%i\n", (*temp).num);
+	}
+	
+//	free memory
+	while(list!=NULL)
+	{
+		temp = list->next;
+		free(list);
+		list = temp;
 	}
 }

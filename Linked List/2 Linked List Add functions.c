@@ -49,4 +49,12 @@ int main()
 //	print
 	for(temp=head; temp!=NULL; temp=temp->next)
 	printf("%i\n", temp->num);
+	
+//	free memory
+	while(head!=NULL)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
 }

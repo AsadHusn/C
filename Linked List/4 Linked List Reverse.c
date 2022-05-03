@@ -25,31 +25,28 @@ int main()
 		}
 	}
 	
-//	Remove from start
-	temp = head;
-	head = head->next;
-	free(temp);
-	
-//	Remove from end
-	for(temp=head; temp->next!=NULL; temp=temp->next)
-	newnode = temp;
-	newnode->next = NULL;
-	free(temp);
-	
-//	Remove from position 4
-	temp = head;
-//	iterate to position 3
-	for(int i=1; i<4-1; i++, temp=temp->next);
-//	save the position 4 in newnode
-	newnode = temp->next;
-//	set position 3 next to position 5
-	temp->next = temp->next->next;
-//	free pos 4
-	free(newnode);
-	
+//	Reverse
+	newnode=temp=head;
+//	Create a node to remember previous
+	node *prenode = NULL;
+//	iterate through all nodes
+	while(temp!=NULL)
+	{
+//		remember the next node in temp
+		temp = temp->next;
+//		set current node next to previous node
+		newnode->next = prenode;
+//		set previous node to current node
+		prenode = newnode;
+//		set current node to next node
+		newnode = temp;
+	}
+//	set head to prenode which is current last node
+	head = prenode;
+
 //	print
 	for(temp=head; temp!=NULL; temp=temp->next)
-	printf("%i\n", temp->num);
+	printf("%i\t", temp->num);
 	
 //	free memory
 	while(head!=NULL)
