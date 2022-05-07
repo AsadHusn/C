@@ -3,6 +3,10 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <strings.h>
 #include "dictionary.h"
 
 // Represents a node in a hash table
@@ -54,7 +58,7 @@ bool load(const char *dictionary)
     	return false;
 	}
 	char word[LENGTH+1];
-	while(fscanf(dictionary, "%s", word) != EOF)
+	while(fscanf(in, "%s", word) != EOF)
 	{
 		node *n = malloc(sizeof(node));
 		strcpy(n->word, word);
@@ -87,12 +91,13 @@ bool unload(void)
     // TODO
     for(int i=0; i<N; i++)
     {
-    	if(table[i] != NULL)
+		while(table[i] != NULL)
     	{
-    		node *head = table[i]->next;
+			node *head = table[i]->next;
     		free(table[i]);
-    		table[i] = head;
+			table[i] = head;
 		}
 	}
-    return false;
+	return true;
+
 }
