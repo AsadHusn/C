@@ -59,6 +59,8 @@ int main()
 	printf("\nEnter name to search: ");
 	gets(name);
 	int x = hash(name);
+//	incomplete till now
+	node *head = data[x];
 	if(strcmp(data[x]->str, name) == 0)
 	{
 		printf("Search success\n");
