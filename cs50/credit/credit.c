@@ -1,9 +1,9 @@
 #include <cs50.c>
 #include <stdio.h>
-int get_length(long x);
+int get_length(unsigned long long x);
 int main(void)
 {
-    long card = get_long("Enter card number: ");
+    long long card = get_long_long("Enter card number: ");
     // get length of card
     int len = get_length(card);
     if (len != 13 && len != 15 && len != 16)
@@ -12,7 +12,7 @@ int main(void)
         return 0;
     }
 
-    long x = card;
+    unsigned long long x = card;
     int m1, m2, d1, d2, sum1, sum2;
     sum1 = sum2 = 0;
     do
@@ -48,7 +48,7 @@ int main(void)
     }
 
     // get the first 2 starting digits
-    long start = card;
+    unsigned long long start = card;
     do
     {
         start /= 10;
@@ -82,7 +82,7 @@ int main(void)
 // MAIN ENDS
 
 // length function start
-int get_length(long x)
+int get_length(unsigned long long x)
 {
     int l = 0;
     while (x > 0)

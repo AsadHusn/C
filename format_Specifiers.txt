@@ -1,6 +1,6 @@
 INTEGER
-%d      signed int
-%u      unsigned int
+%d      signed int decimal integer
+%u      unsigned decimal
 
 %I      signed integer
 %i	unsigned integer
@@ -8,7 +8,11 @@ INTEGER
 %hi	signed short
 %hu	unsigned short
 
-%l | %ld |%li	long
+%l | %ld |%li	long signed
+%lu	unsigned long
+
+%lli | %lld	long long signed
+%llu	unsigned long
 
 %n	prints nothing
 
