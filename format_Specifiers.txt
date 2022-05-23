@@ -8,11 +8,11 @@ INTEGER
 %hi	signed short
 %hu	unsigned short
 
-%l | %ld |%li	long signed
+%l | %ld |%li	signed long
 %lu	unsigned long
 
 %lli | %lld	long long signed
-%llu	unsigned long
+%llu	unsigned long long
 
 %n	prints nothing
 
