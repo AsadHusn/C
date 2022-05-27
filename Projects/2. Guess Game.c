@@ -26,6 +26,6 @@ int main()
 		else
 			printf("\tToo lower\n");
 	}
-	printf("Better Luck Next Time\n");
+	printf("Better luck next time\n");
 	printf("Answer = %d", n);
 }

@@ -20,9 +20,9 @@ int main()
 					return 0;
 				}
 				printf("Enter username: ");
-				scanf("%[^'\n']s", username);
+				gets(username);
 				printf("Enter password: ");
-				scanf("%s", password);
+				gets(password);
 				found = 0;
 				while(fscanf(in, "%s%s", un, pw) != EOF)
 				{
@@ -53,7 +53,7 @@ int main()
 				}
 				
 				printf("Enter username: ");
-				scanf("%s", username);
+				gets(username);
 				found = 0;
 				while(fscanf(out, "%s%s", un, pw) != EOF)
 				{
@@ -69,7 +69,7 @@ int main()
 				break;
 				
 				printf("Enter password: ");
-				scanf("%s", password);
+				gets(password);
 				fprintf(out, "%s\n%s\n", username, password);
 				fclose(out);
 				printf("\tRegister Successfully!\n");
