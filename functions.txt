@@ -1,5 +1,6 @@
 INPUT
 scanf()
+fscanf()
 gets()
 getch()
 getche()

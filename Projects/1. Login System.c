@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<conio.h>
+#include<stdlib.h>
 int main()
 {
 	char username[20], password[20], un[20], pw[20];
@@ -83,5 +84,7 @@ int main()
 			printf("\twrong input\n");
 			break;
 		}
+		system("pause");
+		system("cls");
 	}
 }

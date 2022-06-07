@@ -1,6 +1,7 @@
 #include<stdio.h>
 int main()
 {
+//	Using %[^\n]%*c inside scanf
 /*	gets() only terminates when either:
 		end-of-file is reached
 		n-1 characters are read
