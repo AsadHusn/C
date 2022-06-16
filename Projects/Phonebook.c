@@ -81,8 +81,13 @@ void add()
 //	show all contacts
 void show()
 {
-	char name[30], number[30];
 	FILE *in = fopen("data.txt", "r");
+	if(!in)
+	{
+		puts("\t\t** File Error");
+		return;
+	}
+	char name[30], number[30];
 	int count = 0;
 	while(1)
 	{	
@@ -96,7 +101,7 @@ void show()
 		count++;
 	}
 	if(count == 0)
-	puts("\t\t** File is empty");
+	puts("\t\t** No contacts");
 	else
 	printf("\t* Contacts = %i\n", count);
 	fclose(in);
@@ -104,10 +109,15 @@ void show()
 //	search by name
 void searchname()
 {
+	FILE *in = fopen("data.txt", "r");
+	if(!in)
+	{
+		puts("\t\t** File Error");
+		return;
+	}
 	char name[30], number[30], nm[30];
 	printf("\t\t** Enter name to search: ");
 	gets(nm);
-	FILE *in = fopen("data.txt", "r");
 	int found = 0;
 	while(1)
 	{	
@@ -135,10 +145,15 @@ void searchname()
 //	search by number
 void searchnumber()
 {
+	FILE *in = fopen("data.txt", "r");
+	if(!in)
+	{
+		puts("\t\t** File Error");
+		return;
+	}
 	char name[30], number[30], no[30];
 	printf("\t\t**Enter number: ");
 	gets(no);
-	FILE *in = fopen("data.txt", "r");
 	int found = 0;
 	while(1)
 	{	
@@ -166,10 +181,16 @@ void searchnumber()
 //	delete contact
 void delcontact()
 {
+	FILE *in = fopen("data.txt", "r");
+	if(!in)
+	{
+		puts("\t\t** File Error");
+		return;
+	}
 	char name[30], number[30], nm[30];
 	printf("\t\t**Enter contact name to delete: ");
 	gets(nm);
-	FILE *in = fopen("data.txt", "r");
+	
 	//	save starting position
 	fpos_t pos;
 	fgetpos(in, &pos);
@@ -180,11 +201,11 @@ void delcontact()
 	{	
 		//	get name
 		fgets(name, 30, in);
+		//	remove newline from the end of name
+		name[strlen(name) - 1] = '\0';
 		//	check end of file
 		if(feof(in))
 		break;
-		//	remove newline from the end of name
-		name[strlen(name) - 1] = '\0';
 		//	get number
 		fgets(number, 30, in);
 		contact++;
@@ -196,8 +217,8 @@ void delcontact()
 		}
 	}
 	if(!found)
-	{
-		puts("\t\t\t*** Not found\n");
+	{                          
+		puts("\t\t\t*** Not found");
 		return;
 	}
 	//	set position to start
@@ -219,7 +240,9 @@ void delcontact()
 	
 	fclose(in);
 	fclose(out);
-	printf("\t\t** %s deleted successfully", name);
+	//	remove newline from the end of name
+	name[strlen(name) - 1] = '\0';
+	printf("\t\t\t*** %s deleted successfully\n", name);
 	remove("data.txt");
 	rename("temp.txt", "data.txt");
 }
