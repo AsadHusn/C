@@ -83,6 +83,11 @@ void show()
 {
 	char name[30], number[30];
 	FILE *in = fopen("data.txt", "r");
+	if(!in)
+	{
+		puts("\t\t** File error");
+		return;
+	}
 	int count = 0;
 	while(1)
 	{	
@@ -104,10 +109,17 @@ void show()
 //	search by name
 void searchname()
 {
+	FILE *in = fopen("data.txt", "r");
+	if(!in)
+	{
+		puts("\t\t** File error");
+		return;
+	}
+	//	get name to search
 	char name[30], number[30], nm[30];
 	printf("\t\t** Enter name to search: ");
 	gets(nm);
-	FILE *in = fopen("data.txt", "r");
+	//	check name
 	int found = 0;
 	while(1)
 	{	
@@ -135,10 +147,17 @@ void searchname()
 //	search by number
 void searchnumber()
 {
+	FILE *in = fopen("data.txt", "r");
+	if(!in)
+	{
+		puts("\t\t** File error");
+		return;
+	}
+	//	get number to search
 	char name[30], number[30], no[30];
 	printf("\t\t**Enter number: ");
 	gets(no);
-	FILE *in = fopen("data.txt", "r");
+	//	check number
 	int found = 0;
 	while(1)
 	{	
@@ -166,15 +185,22 @@ void searchnumber()
 //	delete contact
 void delcontact()
 {
+	FILE *in = fopen("data.txt", "r");
+	if(!in)
+	{
+		puts("\t\t** File error");
+		return;
+	}
+	//	get name to delete
 	char name[30], number[30], nm[30];
 	printf("\t\t**Enter contact name to delete: ");
 	gets(nm);
-	FILE *in = fopen("data.txt", "r");
+	
 	//	save starting position
 	fpos_t pos;
 	fgetpos(in, &pos);
 	
-	//	find the position of contact.
+	//	find the position no. of contact.
 	int found=0,contact=0;
 	while(1)
 	{	
@@ -200,7 +226,8 @@ void delcontact()
 		puts("\t\t\t*** Not found\n");
 		return;
 	}
-	//	set position to start
+	
+	//	set position to start of file
 	fsetpos(in, &pos);
 	
 	FILE *out = fopen("temp.txt", "w");
@@ -219,7 +246,7 @@ void delcontact()
 	
 	fclose(in);
 	fclose(out);
-	printf("\t\t** %s deleted successfully", name);
+	printf("\t\t\t*** %s deleted successfully", name);
 	remove("data.txt");
 	rename("temp.txt", "data.txt");
 }
