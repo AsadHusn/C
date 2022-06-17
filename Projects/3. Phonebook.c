@@ -81,13 +81,19 @@ void add()
 //	show all contacts
 void show()
 {
-	char name[30], number[30];
 	FILE *in = fopen("data.txt", "r");
 	if(!in)
 	{
+<<<<<<< HEAD:Projects/3. Phonebook.c
 		puts("\t\t** File error");
 		return;
 	}
+=======
+		puts("\t\t** File Error");
+		return;
+	}
+	char name[30], number[30];
+>>>>>>> f6206b60d5f1e69d50669977f76f1216653bf64d:Projects/Phonebook.c
 	int count = 0;
 	while(1)
 	{	
@@ -101,7 +107,7 @@ void show()
 		count++;
 	}
 	if(count == 0)
-	puts("\t\t** File is empty");
+	puts("\t\t** No contacts");
 	else
 	printf("\t* Contacts = %i\n", count);
 	fclose(in);
@@ -112,6 +118,7 @@ void searchname()
 	FILE *in = fopen("data.txt", "r");
 	if(!in)
 	{
+<<<<<<< HEAD:Projects/3. Phonebook.c
 		puts("\t\t** File error");
 		return;
 	}
@@ -120,6 +127,14 @@ void searchname()
 	printf("\t\t** Enter name to search: ");
 	gets(nm);
 	//	check name
+=======
+		puts("\t\t** File Error");
+		return;
+	}
+	char name[30], number[30], nm[30];
+	printf("\t\t** Enter name to search: ");
+	gets(nm);
+>>>>>>> f6206b60d5f1e69d50669977f76f1216653bf64d:Projects/Phonebook.c
 	int found = 0;
 	while(1)
 	{	
@@ -150,6 +165,7 @@ void searchnumber()
 	FILE *in = fopen("data.txt", "r");
 	if(!in)
 	{
+<<<<<<< HEAD:Projects/3. Phonebook.c
 		puts("\t\t** File error");
 		return;
 	}
@@ -158,6 +174,14 @@ void searchnumber()
 	printf("\t\t**Enter number: ");
 	gets(no);
 	//	check number
+=======
+		puts("\t\t** File Error");
+		return;
+	}
+	char name[30], number[30], no[30];
+	printf("\t\t**Enter number: ");
+	gets(no);
+>>>>>>> f6206b60d5f1e69d50669977f76f1216653bf64d:Projects/Phonebook.c
 	int found = 0;
 	while(1)
 	{	
@@ -188,10 +212,16 @@ void delcontact()
 	FILE *in = fopen("data.txt", "r");
 	if(!in)
 	{
+<<<<<<< HEAD:Projects/3. Phonebook.c
 		puts("\t\t** File error");
 		return;
 	}
 	//	get name to delete
+=======
+		puts("\t\t** File Error");
+		return;
+	}
+>>>>>>> f6206b60d5f1e69d50669977f76f1216653bf64d:Projects/Phonebook.c
 	char name[30], number[30], nm[30];
 	printf("\t\t**Enter contact name to delete: ");
 	gets(nm);
@@ -206,11 +236,11 @@ void delcontact()
 	{	
 		//	get name
 		fgets(name, 30, in);
+		//	remove newline from the end of name
+		name[strlen(name) - 1] = '\0';
 		//	check end of file
 		if(feof(in))
 		break;
-		//	remove newline from the end of name
-		name[strlen(name) - 1] = '\0';
 		//	get number
 		fgets(number, 30, in);
 		contact++;
@@ -222,8 +252,8 @@ void delcontact()
 		}
 	}
 	if(!found)
-	{
-		puts("\t\t\t*** Not found\n");
+	{                          
+		puts("\t\t\t*** Not found");
 		return;
 	}
 	
@@ -246,7 +276,13 @@ void delcontact()
 	
 	fclose(in);
 	fclose(out);
+<<<<<<< HEAD:Projects/3. Phonebook.c
 	printf("\t\t\t*** %s deleted successfully", name);
+=======
+	//	remove newline from the end of name
+	name[strlen(name) - 1] = '\0';
+	printf("\t\t\t*** %s deleted successfully\n", name);
+>>>>>>> f6206b60d5f1e69d50669977f76f1216653bf64d:Projects/Phonebook.c
 	remove("data.txt");
 	rename("temp.txt", "data.txt");
 }
