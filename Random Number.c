@@ -9,5 +9,6 @@ int main()
 	//	pick last digit by mod 10
 	printf("%d", rand());
 	
+	// rand max
 	printf("\nrandmax = %d", RAND_MAX);
 }

@@ -2,8 +2,8 @@ INTEGER
 %d      signed int decimal integer
 %u      unsigned decimal
 
-%I      signed integer
-%i	unsigned integer
+%I      not valid
+%i	signed integer
 
 %hi	signed short
 %hu	unsigned short
@@ -29,6 +29,8 @@ FIELD_WIDTH for INTEGERS
 %+2d    always display sign
 % 2d    display space if no sign
 
+------------------------------------------------
+
 FLOATING_POINT
 %f      signed float or double
 %lf	double
@@ -44,6 +46,8 @@ m = total field width including decimal and fractional part
 n = desired number of decimal places
 %6.2f    =   225.41     
 %2.2f    =   1.23
+
+------------------------------------------------
 
 CHARACTER
 %c      for character
